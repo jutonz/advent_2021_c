@@ -21,14 +21,18 @@ target_link_libraries(day1-2 day1-2_helpers)
 
 # Day 2
 add_executable(day2-1 src/day2/part1.c)
-target_link_libraries(day2-1 file)
+add_library(day2_point src/day2/point.c src/day2/point.h)
+target_link_libraries(day2-1 file day2_point)
 
 # Testing
 enable_testing()
 
 add_executable(day1-2_test src/day1/part2/helpers_test.cc)
-target_link_libraries(day1-2_test day1-2_helpers)
-target_link_libraries(day1-2_test gtest_main)
+target_link_libraries(day1-2_test gtest_main day1-2_helpers)
+
+add_executable(day2-1_test src/day2/point_test.cc)
+target_link_libraries(day2-1_test gtest_main day2_point)
 
 include(GoogleTest)
 gtest_discover_tests(day1-2_test)
+gtest_discover_tests(day2-1_test)
