@@ -4,13 +4,6 @@ extern "C" {
   #include "point.h"
 }
 
-struct Point new_point() {
-  struct Point p;
-  p.x = 0;
-  p.y = 0;
-  return p;
-}
-
 TEST(navigate, goes_forward) {
   struct Point p = new_point();
 

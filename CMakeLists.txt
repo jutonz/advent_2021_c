@@ -23,6 +23,8 @@ target_link_libraries(day1-2 day1-2_helpers)
 add_executable(day2-1 src/day2/part1.c)
 add_library(day2_point src/day2/point.c src/day2/point.h)
 target_link_libraries(day2-1 file day2_point)
+add_executable(day2-2 src/day2/part2.c)
+target_link_libraries(day2-2 file day2_point)
 
 # Testing
 enable_testing()

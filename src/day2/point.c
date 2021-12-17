@@ -10,3 +10,10 @@ void navigate(struct Point *p, char *direction, int amount) {
     p->x -= amount;
   }
 }
+
+struct Point new_point() {
+  struct Point point;
+  point.x = 0;
+  point.y = 0;
+  return point;
+}

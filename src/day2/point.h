@@ -7,5 +7,6 @@ struct Point {
 };
 
 void navigate(struct Point *p, char *direction, int amount);
+struct Point new_point();
 
 #endif
