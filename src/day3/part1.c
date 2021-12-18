@@ -3,13 +3,37 @@
 #include <string.h>
 #include <stdbool.h>
 #include "../file.h"
-#include "./helpers.h"
+#include "./part1.h"
+
+char* _calculate_gamma(struct Column *cols, int length) {
+  char *gamma = (char*)malloc(sizeof(char) * (length + 1));
+  gamma[length + 1] = '\0';
+
+  for (int i = 0; i < length; i++) {
+    struct Column col = cols[i];
+    gamma[i] = col.zeroes > col.ones ? '0' : '1';
+  }
+
+  return gamma;
+}
+
+char* _calculate_epsilon(struct Column *cols, int length) {
+  char *epsilon = (char*)malloc(sizeof(char) * (length + 1));
+  epsilon[length + 1] = '\0';
+
+  for (int i = 0; i < length; i++) {
+    struct Column col = cols[i];
+    epsilon[i] = col.zeroes < col.ones ? '0' : '1';
+  }
+
+  return epsilon;
+}
 
 static const short BUFFER_LENGTH = 255;
-int main(int argc, char *argv[]) {
-  char *filename = check_args(argc, argv);
+
+void run3_1(char *input_filename) {
   char buffer[BUFFER_LENGTH];
-  FILE *fp = open_file(filename);
+  FILE *fp = open_file(input_filename);
 
   bool first_line = true;
   struct Column *columns;
@@ -18,7 +42,6 @@ int main(int argc, char *argv[]) {
   while(fgets(buffer, BUFFER_LENGTH, fp)) {
     if (first_line) {
       length = strlen(buffer) - 1;
-      printf("length is %d\n", length);
       columns = (struct Column*)malloc(sizeof(struct Column) * length);
       for(int i = 0; i < length; i++) {
         struct Column column = {i, 0, 0};
@@ -37,14 +60,12 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  char *gamma = calculate_gamma(columns, length);
-  char *epsilon = calculate_epsilon(columns, length);
+  char *gamma = _calculate_gamma(columns, length);
+  char *epsilon = _calculate_epsilon(columns, length);
 
   int gamma_i = strtol(gamma, NULL, 2);
   int epsilon_i = strtol(epsilon, NULL, 2);
 
   printf("gamma: %d; epsilon: %d\n", gamma_i, epsilon_i);
-  printf("Power consumption: %d\n", gamma_i * epsilon_i);
-
-  return 0;
+  printf("Power consumption rating: %d\n", gamma_i * epsilon_i);
 }

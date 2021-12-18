@@ -10,6 +10,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+# Entrypoint
+add_executable(advent src/main.c)
+
 # General utilities
 add_library(file src/file.c src/file.h)
 
@@ -27,9 +30,13 @@ add_executable(day2-2 src/day2/part2.c)
 target_link_libraries(day2-2 file day2_point)
 
 # Day 3
-add_executable(day3-1 src/day3/part1.c)
-add_library(day3_helpers src/day3/helpers.c src/day3/helpers.h)
-target_link_libraries(day3-1 file day3_helpers)
+add_library(day3-1 src/day3/part1.c src/day3/part1.h)
+target_link_libraries(day3-1 file)
+
+target_link_libraries(
+  advent
+  day3-1
+)
 
 # Testing
 enable_testing()
@@ -41,7 +48,7 @@ add_executable(day2-1_test src/day2/point_test.cc)
 target_link_libraries(day2-1_test gtest_main day2_point)
 
 add_executable(day3-1_test src/day3/part1_test.cc)
-target_link_libraries(day3-1_test gtest_main day3_helpers)
+target_link_libraries(day3-1_test gtest_main day3-1)
 
 include(GoogleTest)
 gtest_discover_tests(day1-2_test)

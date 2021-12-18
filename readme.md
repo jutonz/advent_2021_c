@@ -8,7 +8,13 @@ cmake --build build
 ## Running
 
 ```bash
-./build/day1-1 /path/to/input.txt
+./build/advent -d[day] -p[part] path/to/input.txt
+```
+
+Some older days have their own executables and need to be run indivually, e.g.
+
+```bash
+./build/day1-1 path/to/input.txt
 ```
 
 ## Recompiling
