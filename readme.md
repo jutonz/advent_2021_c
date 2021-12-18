@@ -20,8 +20,7 @@ Some older days have their own executables and need to be run indivually, e.g.
 ## Recompiling
 
 ```bash
-cd build
-make
+cmake --build build
 ```
 
 ## Debugging
@@ -30,6 +29,6 @@ make
 camke -DCMAKE_BUILD_TYPE=Debug -S . -B build-debug/
 cmake --build build-debug
 
-# Then, to debug e.g. day 1, part 2
-lldb ./build-debug/day1-2
+# Then, to debug e.g. day 3, part 1
+lldb ./build-debug/advent -- -d2 -p1 path/to/input.txt
 ```
