@@ -7,7 +7,7 @@
 
 char* _calculate_gamma(struct Column *cols, int length) {
   char *gamma = (char*)malloc(sizeof(char) * (length + 1));
-  gamma[length + 1] = '\0';
+  gamma[length] = '\0';
 
   for (int i = 0; i < length; i++) {
     struct Column col = cols[i];
@@ -19,7 +19,7 @@ char* _calculate_gamma(struct Column *cols, int length) {
 
 char* _calculate_epsilon(struct Column *cols, int length) {
   char *epsilon = (char*)malloc(sizeof(char) * (length + 1));
-  epsilon[length + 1] = '\0';
+  epsilon[length] = '\0';
 
   for (int i = 0; i < length; i++) {
     struct Column col = cols[i];
