@@ -32,10 +32,13 @@ target_link_libraries(day2-2 file day2_point)
 # Day 3
 add_library(day3-1 src/day3/part1.c src/day3/part1.h)
 target_link_libraries(day3-1 file)
+add_library(day3-2 src/day3/part2.c src/day3/part2.h)
+target_link_libraries(day3-2 file)
 
 target_link_libraries(
   advent
   day3-1
+  day3-2
 )
 
 # Testing
@@ -47,10 +50,10 @@ target_link_libraries(day1-2_test gtest_main day1-2_helpers)
 add_executable(day2-1_test src/day2/point_test.cc)
 target_link_libraries(day2-1_test gtest_main day2_point)
 
-add_executable(day3-1_test src/day3/part1_test.cc)
-target_link_libraries(day3-1_test gtest_main day3-1)
+add_executable(day3_test src/day3/test.cc)
+target_link_libraries(day3_test gtest_main day3-1 day3-2)
 
 include(GoogleTest)
 gtest_discover_tests(day1-2_test)
 gtest_discover_tests(day2-1_test)
-gtest_discover_tests(day3-1_test)
+gtest_discover_tests(day3_test)
