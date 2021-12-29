@@ -2,7 +2,6 @@
 #define DAY4_1
 
 #include <vector>
-#include <vector>
 #include <string>
 #include <fstream>
 
@@ -32,5 +31,6 @@ vector<BingoCard> read_cards(fstream*);
 BingoCard read_card(fstream *file);
 vector<string> split_str(string str, string separator);
 string remove_extra_spaces(string str);
+void print_winner(BingoCard card, int winning_number);
 
 #endif
