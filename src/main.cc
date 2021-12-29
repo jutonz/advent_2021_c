@@ -1,7 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "./day3/part1.h"
-#include "./day3/part2.h"
+//#include <stdio.h>
+//#include <stdlib.h>
+#include <iostream>
+
+extern "C" {
+  #include "./day3/part1.h"
+  #include "./day3/part2.h"
+}
+
+#include "./day4/part1.h"
+
+using std::cout;
 
 void print_usage() {
   printf("Usage: ./advent -d[day] -p[part] path/to/input.txt\n");
@@ -52,6 +60,9 @@ int main(int argc, char *argv[]) {
   switch(day) {
     case 3:
       part == 1 ? run3_1(input) : run3_2(input);
+      break;
+    case 4:
+      part == 1 ? run4_1(input) : not_implemented(day, part);
       break;
     default:
       not_implemented(day, part);
