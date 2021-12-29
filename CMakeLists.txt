@@ -39,12 +39,15 @@ target_link_libraries(day3-2 file)
 # Day 4
 add_library(day4-1 src/day4/part1.cc src/day4/part1.h)
 target_link_libraries(day4-1 file)
+add_library(day4-2 src/day4/part2.cc src/day4/part2.h)
+target_link_libraries(day4-2 file)
 
 target_link_libraries(
   advent
   day3-1
   day3-2
   day4-1
+  day4-2
 )
 
 # Testing

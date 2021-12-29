@@ -8,6 +8,7 @@ extern "C" {
 }
 
 #include "./day4/part1.h"
+#include "./day4/part2.h"
 
 using std::cout;
 
@@ -62,7 +63,7 @@ int main(int argc, char *argv[]) {
       part == 1 ? run3_1(input) : run3_2(input);
       break;
     case 4:
-      part == 1 ? run4_1(input) : not_implemented(day, part);
+      part == 1 ? run4_1(input) : run4_2(input);
       break;
     default:
       not_implemented(day, part);
