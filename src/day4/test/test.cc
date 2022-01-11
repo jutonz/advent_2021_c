@@ -1,5 +1,4 @@
-#include "gmock/gmock.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <iostream>
 #include <fstream>
 #include "../part1.h"

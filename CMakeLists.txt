@@ -42,12 +42,16 @@ target_link_libraries(day4-1 file)
 add_library(day4-2 src/day4/part2.cc src/day4/part2.h)
 target_link_libraries(day4-2 file)
 
+# Day 5
+add_library(day5-1 src/day5/part1.cc src/day5/part1.h)
+
 target_link_libraries(
   advent
   day3-1
   day3-2
   day4-1
   day4-2
+  day5-1
 )
 
 # Testing
@@ -63,8 +67,11 @@ add_executable(day3_test src/day3/test.cc)
 target_link_libraries(day3_test gtest_main day3-1 day3-2)
 
 add_executable(day4_test src/day4/test/test.cc)
-target_link_libraries(day4_test gtest_main gmock gtest day4-1 file)
+target_link_libraries(day4_test gtest_main day4-1 file)
 configure_file(src/day4/test/test_input.txt test_fixtures/day4/input.txt COPYONLY)
+
+add_executable(day5_test src/day5/test/day5_test.cc)
+target_link_libraries(day5_test gtest_main day5-1)
 
 include(GoogleTest)
 gtest_discover_tests(day1-2_test)
